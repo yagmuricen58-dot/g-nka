@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Günka Harfiyat - Ana Sayfa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #193f92 0%, #274887 30%, #0e92c6 70%, #d39515 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.15"/><circle cx="20" cy="80" r="0.5" fill="white" opacity="0.15"/><circle cx="80" cy="30" r="0.5" fill="white" opacity="0.15"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: grain 20s linear infinite;
+        }
+        
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            20% { transform: translate(-15%, 5%); }
+            30% { transform: translate(7%, -25%); }
+            40% { transform: translate(-5%, 25%); }
+            50% { transform: translate(-15%, 10%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 15%); }
+            80% { transform: translate(3%, -10%); }
+            90% { transform: translate(-10%, 5%); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #193f92, #0e92c6, #d39515);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .morphing-bg {
+            background: linear-gradient(-45deg, #193f92, #274887, #0e92c6, #d39515);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .shine-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shine-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            transition: left 0.6s;
+        }
+        
+        .shine-effect:hover::after {
+            left: 100%;
+        }
+        
+        .glow-on-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .glow-on-hover:hover {
+            box-shadow: 0 0 20px rgba(25, 63, 146, 0.6);
+            transform: translateY(-2px);
+        }
+        
+        .neon-glow {
+            text-shadow: 0 0 5px rgba(25, 63, 146, 0.5),
+                         0 0 10px rgba(25, 63, 146, 0.5),
+                         0 0 15px rgba(25, 63, 146, 0.5),
+                         0 0 20px rgba(25, 63, 146, 0.5);
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(25, 63, 146, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(25, 63, 146, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(25, 63, 146, 0); }
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #193f92, #0e92c6, #d39515);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .menu-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-2px);
+        }
+        
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #193f92, #0e92c6);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .menu-item:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="w-12 h-12 rounded-lg flex items-center justify-center mr-3 morphing-bg shine-effect glow-on-hover">
+                        <div class="w-8 h-8 bg-white rounded-md flex items-center justify-center">
+                            <span class="text-sm font-bold gradient-text">G</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold gradient-text neon-glow">GÜNKA</h1>
+                        <p class="text-xs text-gray-500 -mt-1">Harfiyat Limited Şirketi</p>
+                    </div>
+                </div>
+                
+                <!-- Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#hakkimizda" class="menu-item text-gray-700 hover:text-blue-600 font-medium">Hakkımızda</a>
+                    <a href="#hizmetler" class="menu-item text-gray-700 hover:text-blue-600 font-medium">Hizmetler</a>
+                    <a href="javascript:void(0)" onclick="openGallery()" class="menu-item text-gray-700 hover:text-blue-600 font-medium">Galeri</a>
+                    <a href="javascript:void(0)" onclick="openReferences()" class="menu-item text-gray-700 hover:text-blue-600 font-medium">Referanslar</a>
+                    <a href="#iletisim" class="menu-item text-gray-700 hover:text-blue-600 font-medium">İletişim</a>
+                    <a href="javascript:void(0)" onclick="showAdminLogin()" class="menu-item text-gray-700 hover:text-blue-600 font-medium">Yönetici</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="#hakkimizda" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Hakkımızda</a>
+                    <a href="#hizmetler" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Hizmetler</a>
+                    <a href="javascript:void(0)" onclick="openGallery()" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Galeri</a>
+                    <a href="javascript:void(0)" onclick="openReferences()" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Referanslar</a>
+                    <a href="#iletisim" class="block px-3 py-2 text-gray-700 hover:text-blue-600">İletişim</a>
+                    <a href="javascript:void(0)" onclick="showAdminLogin()" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Yönetici</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="floating-animation">
+                    <div class="flex items-center justify-center mb-8">
+                        <div class="w-20 h-20 rounded-2xl flex items-center justify-center mr-6 bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg shine-effect pulse-glow">
+                            <span class="text-3xl font-bold text-white">🚛</span>
+                        </div>
+                        <div class="text-left">
+                            <h1 class="text-6xl md:text-8xl font-bold text-white neon-glow">GÜNKA</h1>
+                            <p class="text-xl md:text-2xl text-blue-100 -mt-2">Harfiyat Limited Şirketi</p>
+                        </div>
+                    </div>
+                    <p class="text-2xl md:text-3xl text-blue-100 mb-8 max-w-4xl mx-auto">
+                        25 yıllık deneyimimizle güvenilir iş ortağınız
+                    </p>
+                    <p class="text-lg md:text-xl text-blue-200 mb-12 max-w-3xl mx-auto">
+                        Hafriyat, toprak işleri ve inşaat desteği alanında profesyonel hizmet
+                    </p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                    <a href="https://wa.me/905551234567?text=Merhaba, hizmetleriniz hakkında bilgi almak istiyorum" target="_blank" class="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-opacity-30 transition-all transform hover:scale-105 shine-effect glow-on-hover flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.488"/>
+                        </svg>
+                        WhatsApp ile İletişim
+                    </a>
+                    <a href="tel:+905551234567" target="_blank" class="morphing-bg text-white px-8 py-4 rounded-full text-lg font-semibold transition-all transform hover:scale-105 shine-effect glow-on-hover flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        Hemen Arayın
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="hakkimizda" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold gradient-text mb-6 fade-in-up">Hakkımızda</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto fade-in-up stagger-1">
+                    1999 yılından bu yana sektörde faaliyet gösteren Günka Harfiyat, güvenilir ve kaliteli hizmet anlayışıyla müşterilerinin yanında
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-up stagger-2">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-6">25 Yıllık Deneyim</h3>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Çeyrek asırlık tecrübemizle, hafriyat ve toprak işleri alanında Türkiye'nin önde gelen firmalarından biri haline geldik. Modern ekipmanlarımız ve uzman kadromuzla her türlü projeye çözüm üretiyoruz.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-gray-700">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            ISO 9001 Kalite Yönetim Sistemi
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            Çevre ve İş Güvenliği Sertifikaları
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                            </svg>
+                            7/24 Teknik Destek
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="fade-in-up stagger-3">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center p-6 bg-blue-50 rounded-2xl">
+                            <div class="text-4xl font-bold text-blue-600 mb-2">500+</div>
+                            <div class="text-gray-600">Tamamlanan Proje</div>
+                        </div>
+                        <div class="text-center p-6 bg-green-50 rounded-2xl">
+                            <div class="text-4xl font-bold text-green-600 mb-2">25</div>
+                            <div class="text-gray-600">Yıllık Deneyim</div>
+                        </div>
+                        <div class="text-center p-6 bg-yellow-50 rounded-2xl">
+                            <div class="text-4xl font-bold text-yellow-600 mb-2">50+</div>
+                            <div class="text-gray-600">Uzman Personel</div>
+                        </div>
+                        <div class="text-center p-6 bg-purple-50 rounded-2xl">
+                            <div class="text-4xl font-bold text-purple-600 mb-2">100%</div>
+                            <div class="text-gray-600">Müşteri Memnuniyeti</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="hizmetler" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold gradient-text mb-6 fade-in-up">Hizmetlerimiz</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto fade-in-up stagger-1">
+                    Modern ekipmanlarımız ve uzman kadromuzla geniş hizmet yelpazesi sunuyoruz
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card fade-in-up stagger-1">
+                    <div class="w-16 h-16 morphing-bg rounded-2xl flex items-center justify-center mb-6 shine-effect">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Hafriyat İşleri</h3>
+                    <p class="text-gray-600 mb-6">Temel kazısı, toprak hafriyatı ve zemin düzenleme işleri. Modern ekskavatörler ve deneyimli operatörlerle hızlı ve güvenli hizmet.</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li>• Temel kazısı</li>
+                        <li>• Toprak hafriyatı</li>
+                        <li>• Zemin düzenleme</li>
+                        <li>• Drenaj sistemleri</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card fade-in-up stagger-2">
+                    <div class="w-16 h-16 morphing-bg rounded-2xl flex items-center justify-center mb-6 shine-effect">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">İnşaat Desteği</h3>
+                    <p class="text-gray-600 mb-6">İnşaat projelerinizde ihtiyaç duyduğunuz tüm toprak işleri ve altyapı çalışmaları için profesyonel destek.</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li>• Altyapı hazırlığı</li>
+                        <li>• Beton dökme desteği</li>
+                        <li>• Malzeme taşıma</li>
+                        <li>• Saha temizliği</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card fade-in-up stagger-3">
+                    <div class="w-16 h-16 morphing-bg rounded-2xl flex items-center justify-center mb-6 shine-effect">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Proje Yönetimi</h3>
+                    <p class="text-gray-600 mb-6">Büyük ölçekli projelerinizde baştan sona profesyonel proje yönetimi ve koordinasyon hizmeti.</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li>• Proje planlama</li>
+                        <li>• Zaman yönetimi</li>
+                        <li>• Kalite kontrol</li>
+                        <li>• Raporlama</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card fade-in-up stagger-4">
+                    <div class="w-16 h-16 morphing-bg rounded-2xl flex items-center justify-center mb-6 shine-effect">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Danışmanlık</h3>
+                    <p class="text-gray-600 mb-6">Projelerinizin planlama aşamasından itibaren teknik danışmanlık ve çözüm önerileri sunuyoruz.</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li>• Teknik analiz</li>
+                        <li>• Maliyet hesaplama</li>
+                        <li>• Çözüm önerileri</li>
+                        <li>• Risk değerlendirme</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card fade-in-up stagger-1">
+                    <div class="w-16 h-16 morphing-bg rounded-2xl flex items-center justify-center mb-6 shine-effect">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Ekipman Kiralama</h3>
+                    <p class="text-gray-600 mb-6">İhtiyacınız olan tüm iş makineleri ve ekipmanları operatörlü veya operatörsüz kiralayabilirsiniz.</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li>• Ekskavatör kiralama</li>
+                        <li>• Kamyon kiralama</li>
+                        <li>• Kompaktör kiralama</li>
+                        <li>• Özel ekipmanlar</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card fade-in-up stagger-2">
+                    <div class="w-16 h-16 morphing-bg rounded-2xl flex items-center justify-center mb-6 shine-effect">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Acil Müdahale</h3>
+                    <p class="text-gray-600 mb-6">7/24 acil durum müdahale hizmeti ile beklenmedik durumlarla karşılaştığınızda yanınızdayız.</p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li>• 24 saat hizmet</li>
+                        <li>• Hızlı müdahale</li>
+                        <li>• Acil tamir</li>
+                        <li>• Teknik destek</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="iletisim" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold gradient-text mb-6 fade-in-up">İletişim</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto fade-in-up stagger-1">
+                    Projeleriniz için hemen iletişime geçin, size en uygun çözümü sunalım
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="fade-in-up stagger-2">
+                    <h3 class="text-3xl font-bold mb-8">Bize Ulaşın</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 morphing-bg rounded-lg flex items-center justify-center mr-4 shine-effect">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Telefon</div>
+                                <div class="text-gray-300">+90 555 123 45 67</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 morphing-bg rounded-lg flex items-center justify-center mr-4 shine-effect">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586l-8 8-8-8V4z"/>
+                                    <path d="M2 7.414V18a2 2 0 002 2h16a2 2 0 002-2V7.414l-8 8-8-8z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-semibold">E-posta</div>
+                                <div class="text-gray-300">info@gunkaharfiyat.com</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 morphing-bg rounded-lg flex items-center justify-center mr-4 shine-effect">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Adres</div>
+                                <div class="text-gray-300">İzmir, Türkiye</div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 morphing-bg rounded-lg flex items-center justify-center mr-4 shine-effect">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-semibold">Çalışma Saatleri</div>
+                                <div class="text-gray-300">7/24 Hizmet</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <a href="https://wa.me/905551234567?text=Merhaba, hizmetleriniz hakkında bilgi almak istiyorum" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 shine-effect glow-on-hover flex items-center justify-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.488"/>
+                            </svg>
+                            WhatsApp
+                        </a>
+                        <a href="tel:+905551234567" target="_blank" class="morphing-bg text-white px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 shine-effect glow-on-hover flex items-center justify-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                            Ara
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up stagger-3">
+                    <div class="bg-gray-800 p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6">Hızlı İletişim</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Ad Soyad</label>
+                                <input type="text" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white" placeholder="Adınız ve soyadınız">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Telefon</label>
+                                <input type="tel" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white" placeholder="Telefon numaranız">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">Mesaj</label>
+                                <textarea rows="4" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white" placeholder="Projeniz hakkında detaylar..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full morphing-bg text-white py-3 rounded-lg font-semibold transition-all transform hover:scale-105 shine-effect glow-on-hover">
+                                Mesaj Gönder
+                            </button>
+                        </form>
+                        <p class="text-sm text-gray-400 mt-4 text-center">
+                            * Bu form demo amaçlıdır. Gerçek iletişim için WhatsApp veya telefonu kullanın.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Login Modal -->
+    <div id="adminModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+        <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-md w-90 mx-4 transform transition-all">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 morphing-bg rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                    </svg>
+                </div>
+                <h2 class="text-3xl font-bold gradient-text">Yönetici Girişi</h2>
+                <p class="text-gray-600 mt-2">Galeri yönetimi için giriş yapın</p>
+            </div>
+            
+            <form id="adminLoginForm">
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2">Şifre</label>
+                    <input type="password" id="adminPassword" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors" placeholder="Şifrenizi girin" required>
+                </div>
+                
+                <button type="submit" class="w-full morphing-bg text-white py-3 rounded-lg font-semibold transition-all transform hover:scale-105 mb-4">
+                    Giriş Yap
+                </button>
+                
+                <div class="text-center text-sm text-gray-500 mb-4">
+                    Demo şifre: <code class="bg-gray-100 px-2 py-1 rounded">admin123</code>
+                </div>
+            </form>
+            
+            <div class="text-center">
+                <button onclick="closeAdminModal()" class="text-gray-500 hover:text-gray-700 text-sm">Kapat</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-6">
+                    <div class="w-12 h-12 rounded-lg flex items-center justify-center mr-3 morphing-bg shine-effect glow-on-hover">
+                        <div class="w-8 h-8 bg-white rounded-md flex items-center justify-center">
+                            <span class="text-sm font-bold gradient-text">G</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold gradient-text neon-glow">GÜNKA</h3>
+                        <p class="text-sm text-gray-500 -mt-1">Günka Harfiyat Limited Şirketi</p>
+                    </div>
+                </div>
+                <p class="text-gray-400 mb-6">25 yıllık deneyimimizle güvenilir iş ortağınız</p>
+                <div class="border-t border-gray-800 pt-6">
+                    <p class="text-gray-400">&copy; 2024 Günka Harfiyat Limited Şirketi. Tüm hakları saklıdır.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
